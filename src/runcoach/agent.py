@@ -134,4 +134,8 @@ def _block_to_dict(block: Any) -> dict[str, Any]:
         return {"type": "text", "text": block.text}
     if block.type == "tool_use":
         return {"type": "tool_use", "id": block.id, "name": block.name, "input": dict(block.input or {})}
+    if block.type == "thinking":
+        return {"type": "thinking", "thinking": block.thinking, "signature": block.signature}
+    if block.type == "redacted_thinking":
+        return {"type": "redacted_thinking", "data": block.data}
     return {"type": block.type}
