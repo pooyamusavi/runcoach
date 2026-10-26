@@ -1,0 +1,27 @@
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: runcoach
+      POSTGRES_PASSWORD: runcoach
+      POSTGRES_DB: runcoach
+    ports: ["5432:5432"]
+    volumes: [pgdata:/var/lib/postgresql/data]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U runcoach"]
+      interval: 5s
+      retries: 10
+
+  api:
+    build: .
+    environment:
+      DATABASE_URL: postgresql+psycopg://runcoach:runcoach@db:5432/runcoach
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+      RUNCOACH_MODEL: ${RUNCOACH_MODEL:-claude-sonnet-5-5}
+    ports: ["8000:8000"]
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  pgdata:

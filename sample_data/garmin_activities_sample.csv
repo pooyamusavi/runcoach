@@ -1,0 +1,49 @@
+Activity Type,Date,Favorite,Title,Distance,Calories,Time,Avg HR,Max HR,Avg Pace,Total Ascent
+Running,2026-10-25 06:36:00,false,Montréal - Long Run,23.99,1631,02:13:20,141,165,5:33,65
+Strength Training,2026-10-24 18:00:00,false,Strength,--,210,00:40:00,112,140,--,--
+Running,2026-10-23 06:54:00,false,Montréal - Intervals,9.12,620,00:46:03,161,174,5:03,123
+Running,2026-10-22 06:54:00,false,Montréal - Easy Run,11.13,756,01:04:37,137,153,5:48,101
+Running,2026-10-20 06:46:00,false,Montréal - Tempo,10.31,701,00:48:00,159,176,4:39,65
+Running,2026-10-19 06:46:00,false,Montréal - Easy Run,12.20,829,01:08:37,137,158,5:37,130
+Running,2026-10-18 06:46:00,false,Montréal - Long Run,23.79,1617,02:11:50,140,163,5:32,108
+Strength Training,2026-10-17 18:00:00,false,Strength,--,210,00:40:00,112,140,--,--
+Running,2026-10-16 06:40:00,false,Montréal - Intervals,8.60,584,00:42:27,160,175,4:56,81
+Running,2026-10-15 06:44:00,false,Montréal - Easy Run,9.95,676,00:58:16,136,154,5:51,59
+Running,2026-10-13 06:41:00,false,Montréal - Tempo,10.25,697,00:47:22,161,177,4:37,80
+Running,2026-10-12 06:32:00,false,Montréal - Easy Run,12.24,832,01:09:59,141,154,5:43,98
+Running,2026-10-11 06:48:00,false,Montréal - Long Run,14.65,996,01:21:41,140,166,5:35,32
+Strength Training,2026-10-10 18:00:00,false,Strength,--,210,00:40:00,112,140,--,--
+Running,2026-10-09 06:32:00,false,Montréal - Intervals,6.04,410,00:29:47,156,176,4:56,40
+Running,2026-10-08 06:42:00,false,Montréal - Easy Run,7.08,481,00:40:57,136,151,5:47,81
+Running,2026-10-06 06:57:00,false,Montréal - Tempo,7.01,476,00:32:12,163,181,4:36,107
+Running,2026-10-05 06:46:00,false,Montréal - Easy Run,8.10,550,00:46:25,139,158,5:44,106
+Running,2026-10-04 06:41:00,false,Montréal - Long Run,21.32,1449,01:59:56,144,166,5:38,60
+Strength Training,2026-10-03 18:00:00,false,Strength,--,210,00:40:00,112,140,--,--
+Running,2026-10-02 06:45:00,false,Montréal - Intervals,8.08,549,00:40:03,161,177,4:57,43
+Running,2026-10-01 06:34:00,false,Montréal - Easy Run,10.06,684,00:59:05,133,152,5:52,39
+Running,2026-09-29 06:52:00,false,Montréal - Tempo,9.52,647,00:43:52,160,177,4:36,107
+Running,2026-09-28 06:47:00,false,Montréal - Easy Run,10.30,700,00:58:38,137,154,5:42,124
+Running,2026-09-27 06:42:00,false,Montréal - Long Run,20.36,1384,01:55:32,144,168,5:40,83
+Strength Training,2026-09-26 18:00:00,false,Strength,--,210,00:40:00,112,140,--,--
+Running,2026-09-25 06:49:00,false,Montréal - Intervals,8.58,583,00:42:42,155,176,4:59,27
+Running,2026-09-24 06:42:00,false,Montréal - Easy Run,9.59,652,00:55:17,138,153,5:46,22
+Running,2026-09-22 06:39:00,false,Montréal - Tempo,8.68,590,00:40:15,162,179,4:38,107
+Running,2026-09-21 06:38:00,false,Montréal - Easy Run,9.83,668,00:55:24,138,158,5:38,105
+Running,2026-09-20 06:45:00,false,Montréal - Long Run,20.18,1372,01:54:39,146,168,5:41,78
+Strength Training,2026-09-19 18:00:00,false,Strength,--,210,00:40:00,112,140,--,--
+Running,2026-09-18 06:47:00,false,Montréal - Intervals,8.25,561,00:40:42,159,179,4:56,132
+Running,2026-09-17 06:34:00,false,Montréal - Easy Run,8.70,591,00:50:49,136,154,5:50,25
+Running,2026-09-15 06:49:00,false,Montréal - Tempo,8.61,585,00:39:32,157,175,4:36,85
+Running,2026-09-14 06:39:00,false,Montréal - Easy Run,10.24,696,00:57:41,139,156,5:38,132
+Running,2026-09-13 06:37:00,false,Montréal - Long Run,18.86,1282,01:47:43,149,163,5:43,109
+Strength Training,2026-09-12 18:00:00,false,Strength,--,210,00:40:00,112,140,--,--
+Running,2026-09-11 06:47:00,false,Montréal - Intervals,7.49,509,00:37:27,158,179,5:00,60
+Running,2026-09-10 06:52:00,false,Montréal - Easy Run,8.03,546,00:46:03,133,155,5:44,27
+Running,2026-09-08 06:33:00,false,Montréal - Tempo,8.47,575,00:39:13,161,179,4:38,101
+Running,2026-09-07 06:47:00,false,Montréal - Easy Run,9.01,612,00:51:14,135,157,5:41,59
+Running,2026-09-06 06:37:00,false,Montréal - Long Run,18.54,1260,01:46:29,144,166,5:45,129
+Strength Training,2026-09-05 18:00:00,false,Strength,--,210,00:40:00,112,140,--,--
+Running,2026-09-04 06:37:00,false,Montréal - Intervals,6.47,439,00:32:25,160,178,5:01,94
+Running,2026-09-03 06:37:00,false,Montréal - Easy Run,7.50,510,00:43:24,133,155,5:47,74
+Running,2026-09-01 06:31:00,false,Montréal - Tempo,8.04,546,00:36:49,161,176,4:35,24
+Running,2026-08-31 06:50:00,false,Montréal - Easy Run,8.79,597,00:49:37,135,153,5:39,125
