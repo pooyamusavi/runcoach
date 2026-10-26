@@ -6,9 +6,6 @@ RunCoach turns a runner's **free-text training notes** and **Garmin Connect expo
 structured, queryable training data, and answers questions about that training with a
 **Claude-powered agent that calls analytics tools** over the athlete's real data.
 
-I built it to combine my two worlds: 15+ years of back-end engineering, and my M.A. in
-Sport Psychology at McGill plus marathon training (PB 3:27).
-
 ## What it does
 
 | Capability | How |
