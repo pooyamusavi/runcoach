@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import json
-from datetime import date
+from datetime import date, datetime
 
 from fastapi.testclient import TestClient
 
@@ -9,6 +9,7 @@ from runcoach import analytics
 from runcoach.agent import CoachAgent
 from runcoach.api import create_app
 from runcoach.config import Settings
+from runcoach.db import Activity
 from runcoach.extract import TOOL_NAME
 from runcoach.garmin import import_csv
 from runcoach.llm import Block, Response, ScriptedLLM
@@ -21,6 +22,38 @@ def test_weekly_mileage_ignores_non_running(session, sample_csv: str) -> None:
     weeks = analytics.weekly_mileage(session, weeks=8, today=TODAY)["weeks"]
     assert len(weeks) == 8 and all(w["runs"] <= 5 for w in weeks)
     assert sum(w["km"] for w in weeks) > 300
+
+
+def _add_run(session, day: date, km: float) -> None:
+    session.add(Activity(start_time=datetime.combine(day, datetime.min.time()),
+                          activity_type="Running", distance_km=km))
+
+
+def test_training_load_ratio_math(session) -> None:
+    # 3 weeks of chronic-only running (10 km each), then 20 km in the acute (last 7 days) window.
+    _add_run(session, date(2026, 9, 28), 10.0)
+    _add_run(session, date(2026, 10, 5), 10.0)
+    _add_run(session, date(2026, 10, 12), 10.0)
+    _add_run(session, date(2026, 10, 22), 20.0)
+    session.flush()
+
+    result = analytics.training_load(session, today=TODAY)
+    assert result == {"acute_km": 20.0, "chronic_km_per_week": 12.5, "ratio": 1.6, "warning": True}
+
+
+def test_training_load_empty_database(session) -> None:
+    result = analytics.training_load(session, today=TODAY)
+    assert result == {"acute_km": 0.0, "chronic_km_per_week": 0.0, "ratio": None, "warning": False}
+
+
+def test_training_load_endpoint(session_factory, sample_csv: str) -> None:
+    client = TestClient(create_app(_settings(), llm=None, session_factory=session_factory))
+    client.post("/import/garmin", files={"file": ("a.csv", sample_csv.encode(), "text/csv")})
+    r = client.get("/analytics/training-load")
+    assert r.status_code == 200
+    body = r.json()
+    assert set(body) == {"acute_km", "chronic_km_per_week", "ratio", "warning"}
+    assert isinstance(body["warning"], bool)
 
 
 def test_agent_executes_tools_and_returns_answer(session, sample_csv: str) -> None:

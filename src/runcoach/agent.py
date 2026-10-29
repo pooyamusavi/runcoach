@@ -81,6 +81,16 @@ TOOLS: dict[str, tuple[dict[str, Any], ToolFn]] = {
         },
         lambda s, a: analytics.recent_notes(s, _int_arg(a, "days", 14, 1, 90)),
     ),
+    "get_training_load": (
+        {
+            "name": "get_training_load",
+            "description": "Acute:chronic workload ratio: last 7 days of running distance vs. "
+            "the average weekly distance of the last 28 days. Flags a warning if the ratio "
+            "exceeds 1.3, a sign of a sharp, injury-risking jump in load.",
+            "input_schema": {"type": "object", "properties": {}},
+        },
+        lambda s, a: analytics.training_load(s),
+    ),
 }
 
 

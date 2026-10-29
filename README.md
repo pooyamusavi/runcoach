@@ -58,6 +58,7 @@ docker compose up --build
 | `POST /import/garmin` | Upload a Garmin `Activities.csv` |
 | `GET /analytics/weekly` | Weekly distance, runs and hours |
 | `GET /analytics/long-runs` | Longest run per week with pace and heart rate |
+| `GET /analytics/training-load` | Acute:chronic workload ratio (last 7 days vs. 28-day average); warns above 1.3 |
 | `POST /ask` | Ask the coaching agent |
 
 ## Evaluation
@@ -88,7 +89,6 @@ those cases are exactly where the LLM should earn its place.
 
 ## Roadmap
 
-- Training-load metrics (acute:chronic workload ratio) as an agent tool
 - Eval set expansion and LLM-as-judge scoring for agent answers
 - Simple web UI
 
