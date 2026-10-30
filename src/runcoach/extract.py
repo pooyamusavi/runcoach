@@ -13,7 +13,7 @@ from __future__ import annotations
 
 import re
 from datetime import date
-from typing import Protocol
+from typing import Any, Protocol
 
 from .llm import LLMClient
 from .schemas import Feeling, Workout, WorkoutType
@@ -48,13 +48,28 @@ class LLMExtractor:
 
     def extract(self, note: str, workout_date: date | None = None) -> Workout:
         context = f"Session date: {workout_date.isoformat()}\n" if workout_date else ""
-        response = self._llm.create(
-            system=SYSTEM_PROMPT,
-            messages=[{"role": "user", "content": f"{context}Note:\n{note}"}],
-            tools=[workout_tool()],
-            tool_choice={"type": "tool", "name": TOOL_NAME},
-            max_tokens=800,
-        )
+        messages = [{"role": "user", "content": f"{context}Note:\n{note}"}]
+
+        def ask(tool_choice: dict[str, str]) -> Any:
+            return self._llm.create(
+                system=SYSTEM_PROMPT,
+                messages=messages,
+                tools=[workout_tool()],
+                tool_choice=tool_choice,
+                max_tokens=800,
+            )
+
+        try:
+            # Strict mode: the model must answer by calling record_workout.
+            response = ask({"type": "tool", "name": TOOL_NAME})
+        except Exception as exc:
+            # Some models (e.g. with extended thinking) reject forced tool choice.
+            # Fall back to letting the model choose; the prompt still requires the tool,
+            # and the checks below still reject anything that isn't a valid tool call.
+            if "tool_choice" not in str(exc):
+                raise
+            response = ask({"type": "auto"})
+
         for block in response.content:
             if block.type == "tool_use" and block.name == TOOL_NAME:
                 workout = Workout.model_validate(block.input)

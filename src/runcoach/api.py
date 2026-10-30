@@ -82,6 +82,10 @@ def create_app(
     def long_runs(weeks: int = 8, session: Session = Depends(get_session)) -> dict[str, Any]:
         return analytics.long_run_trend(session, max(1, min(weeks, 52)))
 
+    @app.get("/analytics/training-load")
+    def training_load(session: Session = Depends(get_session)) -> dict[str, Any]:
+        return analytics.training_load(session)
+
     @app.post("/ask", response_model=AskOut)
     def ask(body: AskIn, session: Session = Depends(get_session)) -> AskOut:
         if llm is None:
